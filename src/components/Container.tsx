@@ -45,10 +45,14 @@ export default function Container() {
 
 	const paginationData = (data: PokeData[]) => {
 		const itemsPerPage = 56;
-		const startIndex = (Number(pageNumber) - 1) * itemsPerPage;
-		const endIndex = startIndex + itemsPerPage;
-		const currentPageData = data.slice(startIndex, endIndex);
-		return currentPageData;
+		if (itemsPerPage <= data.length) {
+			const startIndex = (Number(pageNumber) - 1) * itemsPerPage;
+			const endIndex = startIndex + itemsPerPage;
+			const currentPageData = data.slice(startIndex, endIndex);
+			return currentPageData;
+		} else {
+			return data.slice(0, itemsPerPage);
+		}
 	};
 
 	const filterData = () => {

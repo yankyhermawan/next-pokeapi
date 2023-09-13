@@ -89,12 +89,15 @@ export default function Card({ name }: { name: string }) {
 			const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
 			const data: DataFetched = await response.json();
 			setID(Number(data.id));
-			if (data.sprites.other.home.front_default) {
+			if (data.sprites.other.home.front_default && !bgURL) {
 				setBGURL(data.sprites.other.home.front_default);
-			} else {
+			} else if (data.sprites.front_default && !bgURL) {
 				setBGURL(data.sprites.front_default);
+			} else if (data.sprites.other.dream_world.front_default && !bgURL) {
+				setBGURL(data.sprites.other.dream_world.front_default);
+			} else if (!bgURL) {
+				setBGURL(data.sprites.other["official-artwork"].front_default);
 			}
-
 			setBGColor(typeColor[data.types[0].type.name]);
 		};
 		getID();
