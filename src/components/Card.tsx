@@ -1,7 +1,16 @@
 import { useState, useEffect, useMemo } from "react";
 import noImageIcon from "../no-image-icon.png";
 
-interface Types {
+interface Stats {
+	base_stat: number;
+	effort: number;
+	stat: {
+		name: string;
+		url: string;
+	};
+}
+
+export interface Types {
 	slot: number;
 	type: {
 		name: string;
@@ -38,7 +47,7 @@ interface Sprites {
 	other: Sprites_Other;
 }
 
-interface DataFetched {
+export interface DataFetched {
 	abilities: string[];
 	base_experience: number;
 	forms: string[];
@@ -53,6 +62,7 @@ interface DataFetched {
 	order: number;
 	species: string[];
 	sprites: Sprites;
+	stats: Stats[];
 	types: Types[];
 }
 export default function Card({ name }: { name: string }) {
@@ -135,14 +145,14 @@ export default function Card({ name }: { name: string }) {
 	return (
 		<>
 			<a
-				className="flex flex-col rounded-lg border-solid border-[1px] border-black cursor-pointer w-60 h-auto items-center justify-between overflow-hidden whitespace-nowrap"
+				className="flex flex-col rounded-lg border-solid border-[1px] border-black cursor-pointer w-64 h-auto items-center justify-between overflow-hidden whitespace-nowrap hover:scale-110 duration-200 relative"
 				style={{
 					backgroundColor: `${bgColor}`,
 					backgroundPosition: "center",
 					backgroundSize: "cover",
 					backgroundRepeat: "no-repeat",
 				}}
-				href={`https://pokeapi.co/api/v2/pokemon/${id}`}
+				href={`/detail/${id}`}
 			>
 				<span
 					className="text-lg p-2"

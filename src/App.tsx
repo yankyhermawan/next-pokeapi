@@ -1,4 +1,5 @@
-import Container from "./components/Container";
+import CardContainer from "./components/CardContainer";
+import DetailContainer from "./components/DetailContainer";
 import {
 	BrowserRouter as Router,
 	Route,
@@ -11,9 +12,10 @@ function App() {
 	return (
 		<Router>
 			<Routes>
-				<Route path="/page/:pageNumber" Component={Container} />
+				<Route path="/page/:pageNumber" Component={CardContainer} />
 				<Route path="/" element={<Navigate to="/page/1" />} />
 				<Route path="/page" element={<Navigate to="/page/1" />} />
+				<Route path="/detail/:id" Component={DetailContainer} />
 			</Routes>
 		</Router>
 	);
