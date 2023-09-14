@@ -94,6 +94,7 @@ export default function CardContainer() {
 					className="px-8 py-2 border-black border-solid border-[1px] w-[50%] rounded-full m-8 text-xl text-center"
 					value={searchValue}
 					onChange={setInput}
+					placeholder="Search Pokemon"
 				/>
 				<div className="flex flex-row gap-2">
 					Show

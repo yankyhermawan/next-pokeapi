@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
-import noImageIcon from "../no-image-icon.png";
+import noImageIcon from "../resource/no-image-icon.png";
 
-interface Stats {
+export interface Stats {
 	base_stat: number;
 	effort: number;
 	stat: {
@@ -47,6 +47,21 @@ interface Sprites {
 	other: Sprites_Other;
 }
 
+interface Species {
+	name: string;
+	url: string;
+}
+
+export function titleCase(str: string) {
+	return str
+		.toLowerCase()
+		.split(" ")
+		.map(function (word) {
+			return word.charAt(0).toUpperCase() + word.slice(1);
+		})
+		.join(" ");
+}
+
 export interface DataFetched {
 	abilities: string[];
 	base_experience: number;
@@ -60,7 +75,7 @@ export interface DataFetched {
 	moves: string[];
 	name: string;
 	order: number;
-	species: string[];
+	species: Species;
 	sprites: Sprites;
 	stats: Stats[];
 	types: Types[];
@@ -111,7 +126,7 @@ export default function Card({ name }: { name: string }) {
 			setBGColor(typeColor[data.types[0].type.name]);
 		};
 		getID();
-	}, [id, name, typeColor]);
+	}, [bgURL, id, name, typeColor]);
 
 	function getContrastColor(backgroundColor: string) {
 		// Parse the background color into RGB components
@@ -126,16 +141,6 @@ export default function Card({ name }: { name: string }) {
 		// Choose a text color based on the luminance
 		const textColor = luminance > 0.5 ? "#000" : "#fff"; // Dark background, light text; Light background, dark text
 		return textColor;
-	}
-
-	function titleCase(str: string) {
-		return str
-			.toLowerCase()
-			.split(" ")
-			.map(function (word) {
-				return word.charAt(0).toUpperCase() + word.slice(1);
-			})
-			.join(" ");
 	}
 
 	function convertToThreeDigitString(number: number) {
