@@ -15,25 +15,29 @@ export default function BeforeAfterName({
 	id: string;
 }) {
 	return (
-		<div className="grid grid-cols-2 px-4 w-full justify-between text-lg font-bold text-white">
+		<div className="grid grid-cols-2 px-4 w-full justify-between text-md font-bold text-white">
 			{beforeNextName.before ? (
 				<a className="flex flex-row gap-3" href={`/detail/${Number(id) - 1}`}>
 					<img src={leftArrow} width={20} />
-					<span>{titleCase(beforeNextName.before)}</span>
+					<span className="xl:text-4xl md:text-lg text-sm">
+						{titleCase(beforeNextName.before)}
+					</span>
 				</a>
 			) : (
-				""
+				<span></span>
 			)}
 			{beforeNextName.next ? (
 				<a
 					className="flex flex-row gap-3 mr-0 ml-auto"
 					href={`/detail/${Number(id) + 1}`}
 				>
-					<span>{titleCase(beforeNextName.next)}</span>
+					<span className="xl:text-4xl md:text-lg text-sm">
+						{titleCase(beforeNextName.next)}
+					</span>
 					<img src={rightArrow} width={20} />
 				</a>
 			) : (
-				""
+				<span></span>
 			)}
 		</div>
 	);

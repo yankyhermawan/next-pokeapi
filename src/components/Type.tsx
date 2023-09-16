@@ -1,6 +1,8 @@
 import { titleCase } from "./Card";
 import { useMemo } from "react";
 import { typeColors } from "./Detail";
+
+
 export default function TypeComponent({ types }: { types: string[] }) {
 	const typeColor: Record<string, string> = useMemo(
 		() => {

@@ -122,19 +122,24 @@ export default function DetailContainer() {
 		<LoadingComponent />
 	) : (
 		<div className="font-rokkitt">
-			<div className="relative mx-auto w-screen h-screen flex justify-center overflow-x-hidden">
+			<div className="relative mx-auto w-screen h-screen flex justify-center overflow-x-hidden pb-4">
 				<div
-					className="w-[750px] h-[750px] absolute rounded-full mx-auto -mt-[23%]"
+					className="w-[50%] h-[50vw] absolute rounded-full mx-auto -mt-[23%]"
 					style={{ backgroundColor: typeColor[types[0]] }}
 				></div>
-				<div className="flex flex-row w-screen mx-auto absolute border-black border-solid border-[1px] h-screen">
-					<div className="bg-white w-[37.5%] h-screen"></div>
-					<div className="flex flex-col items-center w-1/4 gap-4">
-						<a className="mt-3 text-2xl font-bold text-white" href="/page/1">
+				<div className="flex flex-row w-screen mx-auto absolute h-screen">
+					<div className="bg-white w-[25%] h-full"></div>
+					<div className="flex flex-col w-[50%] items-center gap-4">
+						<a
+							className="mt-3 font-bold text-white xl:text-4xl md:text-lg text-sm"
+							href="/page/1"
+						>
 							PokeDex
 						</a>
 						<BeforeAfterName beforeNextName={beforeNextName} id={String(id)} />
-						<span className="text-4xl">{titleCase(name)}</span>
+						<span className="xl:text-4xl md:text-lg text-sm">
+							{titleCase(name)}
+						</span>
 						<div className="w-full">
 							<img
 								src={url}
@@ -153,7 +158,7 @@ export default function DetailContainer() {
 							evolutionID={evolutionID}
 						/>
 					</div>
-					<div className="bg-white w-[37.5%] h-screen"></div>
+					<div className="bg-white w-[25%] h-screen"></div>
 				</div>
 			</div>
 		</div>

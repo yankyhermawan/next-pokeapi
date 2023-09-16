@@ -111,18 +111,23 @@ export default function CardContainer() {
 					Entries
 				</div>
 			</div>
-
-			<div className="text-black flex flex-wrap gap-4 h-max justify-center mx-auto">
-				{dataToShow.map((data) => (
-					<Card key={data.name} name={data.name} />
-				))}
-			</div>
-			<div className="flex flex-row m-8 justify-center gap-4">
-				<Pagination
-					currentPage={Number(pageNumber)}
-					totalPages={getPageNumbers()}
-				/>
-			</div>
+			{dataToShow.length > 0 ? (
+				<>
+					<div className="text-black flex flex-wrap gap-4 h-max justify-center mx-auto">
+						{dataToShow.map((data) => (
+							<Card key={data.name} name={data.name} />
+						))}
+					</div>
+					<div className="flex flex-row m-8 justify-center gap-4">
+						<Pagination
+							currentPage={Number(pageNumber)}
+							totalPages={getPageNumbers()}
+						/>
+					</div>
+				</>
+			) : (
+				<div>No Pokemon Named {searchValue}</div>
+			)}
 		</div>
 	);
 }
